@@ -22,7 +22,14 @@ async function seedDemoAccounts() {
     console.log('Connected to MongoDB');
 
     // Clear existing demo accounts
-    await User.deleteMany({ email: { $in: ['student@example.com', 'admin@example.com'] } });
+    await User.deleteMany({ email: { $in: [
+      'student@example.com', 
+      'admin@chanakyaacademy.com',
+      'rahul@example.com',
+      'priya@example.com',
+      'amit@example.com',
+      'sneha@example.com'
+    ] } });
     console.log('Cleared existing demo accounts');
 
     // Create demo accounts
@@ -32,14 +39,48 @@ async function seedDemoAccounts() {
         email: 'student@example.com',
         password: await bcrypt.hash('password123', 12),
         phone: '+1234567890',
-        role: 'student'
+        role: 'student',
+        isActive: true
       },
       {
-        name: 'Demo Admin',
-        email: 'admin@example.com',
+        name: 'Rahul Sharma',
+        email: 'rahul@example.com',
+        password: await bcrypt.hash('password123', 12),
+        phone: '+91 98765 43211',
+        role: 'student',
+        isActive: true
+      },
+      {
+        name: 'Priya Patel',
+        email: 'priya@example.com',
+        password: await bcrypt.hash('password123', 12),
+        phone: '+91 98765 43212',
+        role: 'student',
+        isActive: true
+      },
+      {
+        name: 'Amit Kumar',
+        email: 'amit@example.com',
+        password: await bcrypt.hash('password123', 12),
+        phone: '+91 98765 43213',
+        role: 'student',
+        isActive: false
+      },
+      {
+        name: 'Sneha Singh',
+        email: 'sneha@example.com',
+        password: await bcrypt.hash('password123', 12),
+        phone: '+91 98765 43214',
+        role: 'student',
+        isActive: true
+      },
+      {
+        name: 'Admin User',
+        email: 'admin@chanakyaacademy.com',
         password: await bcrypt.hash('admin123', 12),
         phone: '+1234567891',
-        role: 'admin'
+        role: 'admin',
+        isActive: true
       }
     ];
 
