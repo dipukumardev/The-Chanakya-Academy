@@ -19,6 +19,11 @@ Copy and paste these into Render's "Environment Variables" section:
    Value: [GENERATE_A_RANDOM_32_CHARACTER_STRING]
    ⚠️ Generate at: https://generate-secret.vercel.app/32
 
+5. NEXT_PUBLIC_FRONTEND_URL (Optional but recommended)
+   Value: https://the-chanakya-academy.vercel.app
+   ⚠️ This is your Vercel frontend URL for CORS configuration
+   ⚠️ Update with your actual Vercel frontend URL
+
 ===========================================
 QUICK COPY FORMAT (Fill in the values):
 ===========================================
@@ -30,6 +35,8 @@ MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/chanakya-
 NEXTAUTH_URL=https://the-chanakya-academy.onrender.com
 
 NEXTAUTH_SECRET=your-generated-secret-here
+
+NEXT_PUBLIC_FRONTEND_URL=https://the-chanakya-academy.vercel.app
 
 ===========================================
 

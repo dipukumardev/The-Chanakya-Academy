@@ -381,11 +381,13 @@ mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/chanakya-academy?retr
    MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/chanakya-academy?retryWrites=true&w=majority
    NEXTAUTH_URL=https://your-app-name.onrender.com
    NEXTAUTH_SECRET=your-super-secret-random-string-here
+   NEXT_PUBLIC_FRONTEND_URL=https://the-chanakya-academy.vercel.app
    ```
 
    **Important Notes:**
    - Replace `MONGODB_URI` with your actual MongoDB Atlas connection string
    - Replace `NEXTAUTH_URL` with your Render app URL (you'll get this after deployment)
+   - **`NEXT_PUBLIC_FRONTEND_URL`**: Set this to your Vercel frontend URL (`https://the-chanakya-academy.vercel.app`) - This is used for CORS configuration to allow requests from your frontend
    - For `NEXTAUTH_SECRET`, generate a secure random string:
      ```bash
      openssl rand -base64 32
