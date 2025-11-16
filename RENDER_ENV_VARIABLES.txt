@@ -1,0 +1,37 @@
+===========================================
+ENVIRONMENT VARIABLES FOR RENDER
+===========================================
+
+Copy and paste these into Render's "Environment Variables" section:
+
+1. NODE_ENV
+   Value: production
+
+2. MONGODB_URI
+   Value: mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/chanakya-academy?retryWrites=true&w=majority
+   ⚠️ Replace with your actual MongoDB Atlas connection string
+
+3. NEXTAUTH_URL
+   Value: https://the-chanakya-academy.onrender.com
+   ⚠️ Update this AFTER first deployment with your actual Render URL
+
+4. NEXTAUTH_SECRET
+   Value: [GENERATE_A_RANDOM_32_CHARACTER_STRING]
+   ⚠️ Generate at: https://generate-secret.vercel.app/32
+
+===========================================
+QUICK COPY FORMAT (Fill in the values):
+===========================================
+
+NODE_ENV=production
+
+MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/chanakya-academy?retryWrites=true&w=majority
+
+NEXTAUTH_URL=https://the-chanakya-academy.onrender.com
+
+NEXTAUTH_SECRET=your-generated-secret-here
+
+===========================================
+
+
+

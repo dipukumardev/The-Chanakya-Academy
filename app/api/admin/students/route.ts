@@ -4,6 +4,18 @@ import { authOptions } from '../../../../lib/auth'
 import dbConnect from '../../../../lib/mongodb'
 import User from '../../../../models/User'
 
+interface Student {
+  id: string
+  name: string
+  email: string
+  phone: string
+  joinDate: string
+  enrolledCourses: number
+  status: string
+  lastLogin: string
+  totalSpent: number
+}
+
 export async function GET(request: NextRequest) {
   try {
     // Check if user is admin
@@ -16,7 +28,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Try to connect to database
-    let students = []
+    let students: Student[] = []
     
     try {
       await dbConnect()
