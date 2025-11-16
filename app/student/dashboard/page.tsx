@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { BookOpen, Clock, Award, Calendar, Users, BarChart3, Play, FileText, Eye, Heart, MessageCircle, RefreshCw } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import { apiUrl } from '../../../lib/api'
 
 interface Course {
   id: number
@@ -90,7 +91,7 @@ export default function StudentDashboard() {
       
       // Fetch recent blog posts
       try {
-        const blogResponse = await fetch('/api/blogs?limit=6')
+        const blogResponse = await fetch(apiUrl('api/blogs?limit=6'))
         if (blogResponse.ok) {
           const blogData = await blogResponse.json()
           console.log('Blog data received:', blogData) // Debug log

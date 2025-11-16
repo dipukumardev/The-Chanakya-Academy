@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Eye, EyeOff, BookOpen, CheckCircle, User, Mail, Phone, Lock, GraduationCap, ArrowRight, Sparkles } from 'lucide-react'
 import toast from 'react-hot-toast'
+import { apiUrl } from '../../lib/api'
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ export default function SignUp() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch(apiUrl('api/auth/register'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

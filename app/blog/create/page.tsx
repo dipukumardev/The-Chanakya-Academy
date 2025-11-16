@@ -9,6 +9,7 @@ import { ArrowLeft, Save, Eye, Tag, Image as ImageIcon, FileText, Sparkles, Uplo
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import toast from 'react-hot-toast'
+import { apiUrl } from '../../../lib/api'
 
 export default function CreateBlogPage() {
   const { data: session, status } = useSession()
@@ -68,7 +69,7 @@ export default function CreateBlogPage() {
       const formData = new FormData()
       formData.append('image', file)
 
-      const response = await fetch('/api/upload/image', {
+      const response = await fetch(apiUrl('api/upload/image'), {
         method: 'POST',
         body: formData,
       })
@@ -146,7 +147,7 @@ export default function CreateBlogPage() {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0)
 
-      const response = await fetch('/api/blogs', {
+      const response = await fetch(apiUrl('api/blogs'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

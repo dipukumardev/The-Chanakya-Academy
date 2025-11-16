@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import { apiUrl } from '../../../lib/api'
 
 interface Blog {
   id: string
@@ -55,7 +56,7 @@ export default function AdminBlogs() {
     try {
       setLoading(true)
       // Fetch real blog data from API
-      const response = await fetch('/api/blogs?limit=50')
+      const response = await fetch(apiUrl('api/blogs?limit=50'))
       if (response.ok) {
         const data = await response.json()
         if (data.success && data.blogs) {
@@ -171,7 +172,7 @@ export default function AdminBlogs() {
   const handleDeleteBlog = async (blogId: string) => {
     if (confirm('Are you sure you want to delete this blog post?')) {
       try {
-        const response = await fetch(`/api/blogs/${blogId}`, {
+        const response = await fetch(apiUrl(`api/blogs/${blogId}`), {
           method: 'DELETE'
         })
         if (response.ok) {

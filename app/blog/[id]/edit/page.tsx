@@ -9,6 +9,7 @@ import { ArrowLeft, Save, Eye, Tag, Image as ImageIcon } from 'lucide-react'
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import toast from 'react-hot-toast'
+import { apiUrl } from '../../../../lib/api'
 
 interface Blog {
   _id: string
@@ -58,7 +59,7 @@ export default function EditBlogPage() {
   const fetchBlog = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/blogs/${params.id}`)
+      const response = await fetch(apiUrl(`api/blogs/${params.id}`))
       const data = await response.json()
 
       if (data.success) {
@@ -113,7 +114,7 @@ export default function EditBlogPage() {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0)
 
-      const response = await fetch(`/api/blogs/${params.id}`, {
+      const response = await fetch(apiUrl(`api/blogs/${params.id}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

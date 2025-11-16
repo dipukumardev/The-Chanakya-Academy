@@ -52,7 +52,7 @@ export default function AdminStudents() {
       setLoading(true)
       
       // Fetch real student data from API
-      const response = await fetch('/api/admin/students')
+      const response = await fetch(apiUrl('api/admin/students'))
       if (response.ok) {
         const data = await response.json()
         if (data.success && data.students) {

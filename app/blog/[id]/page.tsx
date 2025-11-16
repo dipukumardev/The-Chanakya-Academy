@@ -9,6 +9,7 @@ import { useSession } from 'next-auth/react'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import toast from 'react-hot-toast'
+import { apiUrl } from '../../../lib/api'
 
 interface Blog {
   _id: string
@@ -62,7 +63,7 @@ export default function BlogPostPage() {
   const fetchBlog = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/blogs/${params.id}`)
+      const response = await fetch(apiUrl(`api/blogs/${params.id}`))
       const data = await response.json()
 
       if (data.success) {
@@ -82,7 +83,7 @@ export default function BlogPostPage() {
     if (!session?.user || !blog) return
 
     try {
-      const response = await fetch(`/api/blogs/${blog._id}/like`, {
+      const response = await fetch(apiUrl(`api/blogs/${blog._id}/like`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ export default function BlogPostPage() {
 
     try {
       setSubmittingComment(true)
-      const response = await fetch(`/api/blogs/${blog._id}/comments`, {
+      const response = await fetch(apiUrl(`api/blogs/${blog._id}/comments`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -141,7 +142,7 @@ export default function BlogPostPage() {
     if (!confirm('Are you sure you want to delete this blog?')) return
 
     try {
-      const response = await fetch(`/api/blogs/${blog._id}`, {
+      const response = await fetch(apiUrl(`api/blogs/${blog._id}`), {
         method: 'DELETE',
       })
 

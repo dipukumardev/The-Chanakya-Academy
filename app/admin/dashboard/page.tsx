@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { Users, BookOpen, TrendingUp, DollarSign, Plus, Edit, Trash2, Eye, FileText, BarChart3, Settings, LogOut, Heart, Calendar, MessageCircle } from 'lucide-react'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
+import { apiUrl } from '../../../lib/api'
 
 interface Blog {
   id: string
@@ -59,7 +60,7 @@ export default function AdminDashboard() {
       setLoading(true)
       
       // Fetch admin statistics
-      const statsResponse = await fetch('/api/admin/stats')
+      const statsResponse = await fetch(apiUrl('api/admin/stats'))
       let adminStats = null
       if (statsResponse.ok) {
         const statsData = await statsResponse.json()
@@ -69,7 +70,7 @@ export default function AdminDashboard() {
       }
 
       // Fetch blogs data
-      const blogResponse = await fetch('/api/blogs?limit=10')
+      const blogResponse = await fetch(apiUrl('api/blogs?limit=10'))
       let blogs = []
       if (blogResponse.ok) {
         const blogData = await blogResponse.json()

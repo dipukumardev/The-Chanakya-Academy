@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { Search, Plus, Calendar, User, Eye, Heart, MessageCircle, Tag, FileText, Sparkles, Filter, TrendingUp, BookOpen } from 'lucide-react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import { apiUrl } from '../../lib/api'
 
 interface Blog {
   _id: string
@@ -57,7 +58,7 @@ export default function BlogPage() {
         ...(selectedTag && { tag: selectedTag })
       })
 
-      const response = await fetch(`/api/blogs?${params}`)
+      const response = await fetch(apiUrl(`api/blogs?${params}`))
       const data = await response.json()
 
       if (data.success) {
@@ -73,7 +74,7 @@ export default function BlogPage() {
 
   const fetchTags = async () => {
     try {
-      const response = await fetch('/api/blogs/tags')
+      const response = await fetch(apiUrl('api/blogs/tags'))
       const data = await response.json()
       if (data.success) {
         setAllTags(data.tags)
